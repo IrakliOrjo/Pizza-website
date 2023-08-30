@@ -1,7 +1,29 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+import Nav from './components/Nav'
+
+import { Bangers, Quicksand, Roboto_Condensed } from 'next/font/google'
+import CartMobileIcon from './components/CartMobileIcon'
+
+//provider
+import CartProvider from './context/CartContext'
+
+const quicksand = Quicksand({
+  subsets: ['latin'],
+  variable: '--font-quicksand'
+})
+
+const bangers = Bangers({
+  subsets: ['latin'],
+  variable: '--font-bangers',
+  weight: ['400']
+})
+
+const robotoCondensed = Roboto_Condensed({
+  subsets: ['latin'],
+  variable: '--font-robotoCondensed',
+  weight: ['300', '400', '700']
+})
 
 export const metadata = {
   title: 'Create Next App',
@@ -10,8 +32,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <CartProvider>
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body 
+      className={`${quicksand.variable} 
+      ${bangers.variable} ${robotoCondensed.variable} 
+      font-quicksand`}>
+       <Nav />
+       <CartMobileIcon />
+        {children}
+        </body>
     </html>
+    </CartProvider>
   )
 }
