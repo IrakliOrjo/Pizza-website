@@ -3,10 +3,15 @@ import './globals.css'
 import Nav from './components/Nav'
 
 import { Bangers, Quicksand, Roboto_Condensed } from 'next/font/google'
+
+//components
 import CartMobileIcon from './components/CartMobileIcon'
+import CartMobile from './components/CartMobile'
+import CartDesktop from './components/CartDesktop'
 
 //provider
 import CartProvider from './context/CartContext'
+import Footer from './components/Footer'
 
 const quicksand = Quicksand({
   subsets: ['latin'],
@@ -40,7 +45,10 @@ export default function RootLayout({ children }) {
       font-quicksand`}>
        <Nav />
        <CartMobileIcon />
+       <CartMobile />
         {children}
+        <CartDesktop />
+        <Footer />
         </body>
     </html>
     </CartProvider>
